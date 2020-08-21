@@ -16,3 +16,10 @@ mix.js([
         'resources/js/ajaxLogOut.js',
     ], 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+// back-end js & css
+mix.js([
+        'resources/js/layouts_back-end.js',
+        'resources/js/ajaxLogOut.js'
+    ], 'public/js/app_back-end.js')
+    .sass('resources/sass/layouts_back-end.scss', 'public/css/app_back-end.css');
