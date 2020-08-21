@@ -25,4 +25,19 @@ return [
         'notify_problem' => 'If you did not receive the email',
         'request_another' => 'click here to request another',
     ],
+    'front_end' => [
+        'nav' => [
+            'home' => 'Home',
+            'courses' => 'Courses',
+            'word_list' => 'Word List',
+            'start_lesson' => 'Start Lesson',
+            'storyboard' => 'Storyboard',
+            'account' => 'Account',
+            'profile' => 'Profile',
+        ],
+        'cover' => [
+            'home_title' => 'Learn Languages Easily',
+            'home_button' => 'Get Started',
+        ],
+    ],
 ];

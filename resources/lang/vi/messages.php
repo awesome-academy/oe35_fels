@@ -25,4 +25,19 @@ return [
         'notify_problem' => 'Nếu bạn không nhận được email',
         'request_another' => 'nhấn vào đây để gửi yêu cầu khác',
     ],
+    'front_end' => [
+        'nav' => [
+            'home' => 'Trang chủ',
+            'courses' => 'Khóa học',
+            'word_list' => 'Danh sách Từ',
+            'start_lesson' => 'Làm bài',
+            'storyboard' => 'Trang chính',
+            'account' => 'Tài khoản',
+            'profile' => 'Trang cá nhân',
+        ],
+        'cover' => [
+            'home_title' => 'Học ngoại ngữ dễ dàng',
+            'home_button' => 'Bắt đầu',
+        ],
+    ],
 ];
