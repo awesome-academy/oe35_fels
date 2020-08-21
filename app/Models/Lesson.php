@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Course;
 use App\Models\Question;
 
-class Lession extends Model
+class Lesson extends Model
 {
     protected $fillable = [
         'name',
