@@ -74,7 +74,7 @@ abstract class EloquentRepository implements RepositoryInterface
         }
     }
 
-    private function errroResult($msg)
+    protected function errroResult($msg)
     {
         $message = [
             'errorMsg' => $msg

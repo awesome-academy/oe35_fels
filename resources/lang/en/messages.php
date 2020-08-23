@@ -40,4 +40,41 @@ return [
             'home_button' => 'Get Started',
         ],
     ],
+    'dataTables' => [
+        'add' => 'Add',
+        'back' => 'Back',
+        'trash' => 'Trash',
+        'no_index' => '#',
+        'name' => 'Name',
+        'created_at' => 'Created at',
+        'updated_at' => 'Updated at',
+        'action' => 'Action',
+
+    ],
+    'modal' => [
+        'msg' => [
+            'label' => 'Confirmation',
+            'title' => 'Are you sure you want to remove this data?',
+        ],
+        'button' => [
+            'close' => 'Close',
+            'save' => 'Save',
+            'cancel' => 'Cancel',
+            'ok' => 'Ok',
+        ],
+        'form' => [
+            'name' => 'Name:',
+        ],
+    ],
+    'validate' => [
+        'name' => [
+            'required' => 'Name is required!',
+            'min' => 'Minimum length is 2!',
+            'max' => 'Maximum length is 255!',
+        ],
+    ],
+    'json' => [
+        'success' => 'Success!',
+        'success_delete' => 'Successfully deleted!',
+    ],
 ];
