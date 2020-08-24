@@ -3,22 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CourseRequest;
-use App\Repositories\ModelsInterface\CourseRepositoryInterface;
+use App\Http\Requests\LessonRequest;
+use App\Repositories\ModelsInterface\LessonRepositoryInterface;
 use App\Traits\JsonData;
 use Illuminate\Http\Request;
 
 
-class CourseController extends Controller
+class LessonController extends Controller
 {
     use JsonData;
 
-    private $courseRepository;
+    private $lessonRepository;
 
-    public function __construct(CourseRepositoryInterface $courseRepository)
+    public function __construct(LessonRepositoryInterface $lessonRepository)
     {
-        $this->courseRepository = $courseRepository;
+        $this->lessonRepository = $lessonRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,10 +28,10 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            return $this->courseRepository->jsonCourses();
+            return $this->lessonRepository->jsonLessons();
         }
 
-        return view('back-end.courses.index');
+        return view('back-end.lessons.index');
     }
 
     /**
@@ -49,10 +50,10 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CourseRequest $request)
+    public function store(LessonRequest $request)
     {
         try {
-            $result = $this->courseRepository->storeCourseJSON($request->all());
+            $result = $this->lessonRepository->storeLessonJSON($request->all());
             if (isset($result['errorMsg'])) {
                 return $this->jsonMsgResult($result, false, 500);
             }
@@ -83,7 +84,10 @@ class CourseController extends Controller
     public function edit($id)
     {
         try {
-            $data = $this->courseRepository->findById($id);
+            $data = $this->lessonRepository->findById($id);
+            $course = $data->course()->select('name')->get();
+            $data->course_name = $course['0']->name;
+
             return $this->jsonDataResult($data, 200);
         } catch (\Exception $e) {
             return $this->jsonMsgResult($e->getMessage(), false, 500);
@@ -111,8 +115,8 @@ class CourseController extends Controller
     public function destroy($id)
     {
         try {
-            $course = $this->courseRepository->findById($id);
-            $result = $this->courseRepository->destroy($course);
+            $course = $this->lessonRepository->findById($id);
+            $result = $this->lessonRepository->destroy($course);
             if (isset($result['msgError'])) {
                 return $this->jsonMsgResult($result, false, 500);
             }
@@ -121,31 +125,5 @@ class CourseController extends Controller
         } catch (\Exception $e) {
             return $this->jsonMsgResult($e->getMessage(), false, 500);
         }
-    }
-
-    // get course list
-    public function getCourseList()
-    {
-        try {
-            $data = $this->courseRepository->getCourseList();
-
-            return $this->jsonDataResult($data, 200);
-        } catch (\Exception $e) {
-            return $this->jsonMsgResult($e->getMessage(), false, 500);
-        }
-    }
-
-    /**
-     * Display exception errors of request.
-    */
-    private function jsonMsgResult($errors, $success, $statusCode)
-    {
-        $result = [
-            'errors' => $errors,
-            'success' => $success,
-            'statusCode' => $statusCode,
-        ];
-
-        return response()->json($result, $result['statusCode']);
     }
 }

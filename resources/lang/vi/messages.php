@@ -49,7 +49,6 @@ return [
         'created_at' => 'Thời gian tạo',
         'updated_at' => 'Thời gian cập nhật',
         'action' => 'Thao tác',
-
     ],
     'modal' => [
         'msg' => [
@@ -63,7 +62,8 @@ return [
             'ok' => 'Ok',
         ],
         'form' => [
-            'name' => 'Tên:',
+            'name' => 'Tên',
+            'course' => 'Khóa học',
         ],
     ],
     'validate' => [

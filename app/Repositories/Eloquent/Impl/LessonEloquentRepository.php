@@ -3,11 +3,12 @@
 namespace App\Repositories\Eloquent\Impl;
 
 use App\Models\Course;
+use App\Models\Lesson;
 use App\Repositories\Eloquent\EloquentRepository;
-use App\Repositories\ModelsInterface\CourseRepositoryInterface;
+use App\Repositories\ModelsInterface\LessonRepositoryInterface;
 use Yajra\DataTables\DataTables;
 
-class CourseEloquentRepository extends EloquentRepository implements CourseRepositoryInterface
+class LessonEloquentRepository extends EloquentRepository implements LessonRepositoryInterface
 {
     /**
      * get Model
@@ -15,16 +16,15 @@ class CourseEloquentRepository extends EloquentRepository implements CourseRepos
      */
     public function getModel()
     {
-        $model = Course::class;
+        $model = Lesson::class;
         return $model;
     }
 
-    // get course records
-    public function jsonCourses()
+    // get lesson records
+    public function jsonLessons()
     {
         try {
-            $data = $this->model::select('*');
-
+            $data = $this->model::select('*')->with('course:id,name');
             return DataTables::of($data)->addIndexColumn()->toJson();
         } catch (\Exception $e) {
             return $this->errroResult($e->getMessage());
@@ -32,26 +32,16 @@ class CourseEloquentRepository extends EloquentRepository implements CourseRepos
     }
 
     // store record
-    public function storeCourseJSON($request)
+    public function storeLessonJSON($request)
     {
         try {
             if (isset($request['record_id'])) {
-                $course = $this->findById($request['record_id']);
+                $lesson = $this->findById($request['record_id']);
 
-                return $this->update($request, $course);
+                return $this->update($request, $lesson);
             }
 
             return $this->create($request);
-        } catch (\Exception $e) {
-            return $this->errroResult($e->getMessage());
-        }
-    }
-
-    // get course list for lesson
-    public function getCourseList()
-    {
-        try {
-            return $this->model::doesnthave('lesson')->get();
         } catch (\Exception $e) {
             return $this->errroResult($e->getMessage());
         }

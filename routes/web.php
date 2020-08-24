@@ -26,4 +26,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::resource('courses', 'CourseController');
+
+    // get course list for lesson
+    Route::get('/courses-list', 'CourseController@getCourseList')->name('courses.list');
+
+    Route::resource('lessons', 'LessonController');
 });
