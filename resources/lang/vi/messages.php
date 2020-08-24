@@ -40,4 +40,41 @@ return [
             'home_button' => 'Bắt đầu',
         ],
     ],
+    'dataTables' => [
+        'add' => 'Thêm',
+        'back' => 'Trở lại',
+        'trash' => 'Thùng rác',
+        'no_index' => '#',
+        'name' => 'Tên',
+        'created_at' => 'Thời gian tạo',
+        'updated_at' => 'Thời gian cập nhật',
+        'action' => 'Thao tác',
+
+    ],
+    'modal' => [
+        'msg' => [
+            'label' => 'Xác nhận',
+            'title' => 'Bạn chắc chắn muốn xóa?',
+        ],
+        'button' => [
+            'close' => 'Đóng',
+            'save' => 'Lưu',
+            'cancel' => 'Hủy',
+            'ok' => 'Ok',
+        ],
+        'form' => [
+            'name' => 'Tên:',
+        ],
+    ],
+    'validate' => [
+        'name' => [
+            'required' => 'Yêu cầu nhập tên!',
+            'min' => 'Tối thiểu 2 ký tự!',
+            'max' => 'Tối đa 255 ký tự!',
+        ],
+    ],
+    'json' => [
+        'success' => 'Thành công!',
+        'success_delete' => 'Xóa thành công!',
+    ],
 ];

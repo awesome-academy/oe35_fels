@@ -70,5 +70,5 @@
     <script src="{{ asset('js/app_back-end.js') }}"></script>
 
     <!-- OPTIONAL JS -->
-    <!-- @stack('js') -->
+    @stack('js')
 </html>
