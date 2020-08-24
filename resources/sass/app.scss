@@ -1,8 +1,20 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900|Poppins:300,400,500,600,700,800,900');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Font-awesome
+@import '~admin-lte/plugins/fontawesome-free/css/all.min.css';
+
+// OwlCarousel
+@import '../front-end/plugins/OwlCarousel2-2.2.1/owl.carousel.css';
+@import '../front-end/plugins/OwlCarousel2-2.2.1/owl.theme.default.css';
+@import '../front-end/plugins/OwlCarousel2-2.2.1/animate.css';
+
+// front-end CSS
+@import '../front-end/css/styles.css';
+@import '../front-end/css/styles_responsive.css';

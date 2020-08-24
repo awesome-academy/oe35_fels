@@ -14,6 +14,9 @@ const mix = require('laravel-mix');
 mix.js([
         'resources/js/app.js',
         'resources/js/ajaxLogOut.js',
+        'resources/front-end/plugins/OwlCarousel2-2.2.1/owl.carousel.js',
+        'resources/front-end/plugins/easing/easing.js',
+        'resources/front-end/js/custom.js',
     ], 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
