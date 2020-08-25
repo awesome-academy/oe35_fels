@@ -49,7 +49,6 @@ return [
         'created_at' => 'Created at',
         'updated_at' => 'Updated at',
         'action' => 'Action',
-
     ],
     'modal' => [
         'msg' => [
@@ -63,7 +62,8 @@ return [
             'ok' => 'Ok',
         ],
         'form' => [
-            'name' => 'Name:',
+            'name' => 'Name',
+            'course' => 'Course',
         ],
     ],
     'validate' => [
