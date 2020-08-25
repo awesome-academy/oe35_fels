@@ -57,3 +57,4 @@ class CourseEloquentRepository extends EloquentRepository implements CourseRepos
         }
     }
 }
+

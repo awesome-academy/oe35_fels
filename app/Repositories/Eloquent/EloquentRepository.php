@@ -6,7 +6,6 @@ use App\Repositories\RepositoryInterface;
 
 abstract class EloquentRepository implements RepositoryInterface
 {
-
     protected $model;
 
     public function __construct()

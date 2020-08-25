@@ -77,4 +77,40 @@ return [
         'success' => 'Success!',
         'success_delete' => 'Successfully deleted!',
     ],
+    'question' => [
+        'btn_add' => 'Add',
+        'btn_back' => 'Back',
+        'btn_trash' => 'Trash',
+        'success' => 'Success!',
+        'not_found' => 'Not found!',
+        'success_delete' => 'Successfully deleted!',
+        'success_restore' => 'Successfully restored!',
+        'validate' => [
+            'name' => [
+                'required' => 'Name is required!',
+                'min' => 'Minimum length is 2!',
+                'max' => 'Maximum length is 255!',
+            ],
+            'optionA' => [
+                'required' => 'Option A is required!',
+                'min' => 'Minimum length is 2',
+                'max' => 'Maximum length is 255'
+            ],
+            'optionB' => [
+                'required' => 'Option B is required!',
+                'min' => 'Minimum length is 2',
+                'max' => 'Maximum length is 255'
+            ],
+            'optionC' => [
+                'required' => 'Option B is required!',
+                'min' => 'Minimum length is 2',
+                'max' => 'Maximum length is 255'
+            ],
+            'optionD' => [
+                'required' => 'Option B is required!',
+                'min' => 'Minimum length is 2',
+                'max' => 'Maximum length is 255'
+            ],
+        ],
+    ],
 ];

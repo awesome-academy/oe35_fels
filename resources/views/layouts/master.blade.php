@@ -45,5 +45,5 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- OPTIONAL JS -->
-    <!-- @stack('js') -->
+    @stack('js')
 </html>
