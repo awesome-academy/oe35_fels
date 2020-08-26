@@ -5,7 +5,9 @@
             <div class="row">
                 <div class="col text-center">
                     <h1 class="home_title">@lang('messages.front_end.cover.home_title')</h1>
-                    <div class="home_button trans_200"><a href="#">@lang('messages.front_end.cover.home_button')</a></div>
+                    <div class="home_button trans_200">
+                        <a href="{{ route('fels.course.list') }}">@lang('messages.front_end.cover.home_button')</a>
+                    </div>
                 </div>
             </div>
         </div>

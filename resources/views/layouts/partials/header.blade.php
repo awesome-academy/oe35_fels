@@ -6,14 +6,14 @@
                 <div class="col">
                     <div class="header_content d-flex flex-row align-items-center justify-content-start">
                         <div class="logo_container mr-auto">
-                            <a href="#">
+                            <a href="{{ route('homepage') }}">
                                 <div class="logo_text">{{ config('app.name') }}</div>
                             </a>
                         </div>
                         <nav class="main_nav_contaner">
                             <ul class="main_nav">
-                                <li class="active"><a href="#">@lang('messages.front_end.nav.home')</a></li>
-                                <li><a href="#">@lang('messages.front_end.nav.courses')</a></li>
+                            <li class="active"><a href="{{ route('homepage') }}">@lang('messages.front_end.nav.home')</a></li>
+                                <li><a href="{{ route('fels.course.list') }}">@lang('messages.front_end.nav.courses')</a></li>
                                 @auth
                                 <li><a href="#">@lang('messages.front_end.nav.word_list')</a></li>
                                 <li><a href="#">@lang('messages.front_end.nav.start_lesson')</a></li>

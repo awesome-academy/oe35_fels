@@ -1,17 +1,19 @@
 @extends('layouts.master')
 
+@section('title', 'Courses')
+
 @section('content')
 <div class="courses">
     <div class="courses_background"></div>
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2 class="section_title text-center">@lang('messages.front_end.fels.popular_course_text')</h2>
+                <h2 class="section_title text-center">@lang('messages.front_end.nav.courses')</h2>
             </div>
         </div>
         <div class="row courses_row">
             <!-- Course -->
-            @forelse ($popularCourses as $course)
+            @forelse ($courses as $course)
                 <div class="col-lg-4 course_col">
                     <div class="course">
                         <div class="course_image"><img src="{{ asset('img/course.jpg') }}" alt=""></div>
@@ -40,6 +42,14 @@
                     <h5 class="section_title text-center">@lang('messages.front_end.fels.not_found')</h5>
                 </div>
             @endforelse
+            <!-- Pagination -->
+            @if ($courses->isNotEmpty())
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    {!! $courses->links() !!}
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 </div>
