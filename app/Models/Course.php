@@ -15,7 +15,7 @@ class Course extends Model
 
     public function words()
     {
-        return $this->hasMany(Word::class, 'course_id' ,'id');
+        return $this->hasMany(Word::class, 'course_id', 'id');
     }
 
     public function lesson()
@@ -25,6 +25,22 @@ class Course extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'course_user', 'course_id', 'user_id');    
+        return $this->belongsToMany(User::class, 'course_user', 'course_id', 'user_id');
+    }
+
+    // Get course info with count total related users and words
+    public function scopeCountInfo($query)
+    {
+        return $query->withCount('users')->withCount('words');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'name';
     }
 }

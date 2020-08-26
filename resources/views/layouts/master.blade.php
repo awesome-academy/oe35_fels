@@ -32,6 +32,11 @@
             @include('layouts.partials.cover')
         @endif
 
+        <!-- Message notification -->
+        <div class="language">
+            @include('layouts.partials.message')
+        </div>
+
         <!-- Main Container -->
         <main>
             @yield('content')
@@ -45,5 +50,5 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- OPTIONAL JS -->
-    <!-- @stack('js') -->
+    @stack('js')
 </html>
