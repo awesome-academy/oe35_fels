@@ -22,7 +22,6 @@ class WordsTableSeeder extends Seeder
                 'course_id' => random_int(1, $courseNumber),
                 'name' => $faker->word,
                 'mean' => $faker->sentence(3),
-                'is_learned' => false,
             ]);
         }
     }

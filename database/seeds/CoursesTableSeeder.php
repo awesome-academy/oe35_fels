@@ -19,6 +19,7 @@ class CoursesTableSeeder extends Seeder
         for ($i=0; $i < $limit; $i++) {
             DB::table('courses')->insert([
                 'name' => $faker->word,
+                'description' => $faker->sentence(3),
             ]);
         }
     }

@@ -20,6 +20,12 @@ class Word extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_word', 'word_id', 'user_id');
+        return $this->belongsToMany(User::class, 'user_word', 'word_id', 'user_id')
+                    ->withPivot('status')->withTimestamps();
+    }
+
+    public function rememberWord($userId, $wordId)
+    {
+        return $this->users()->wherePivot('user_id', $userId)->wherePivot('word_id', $wordId);
     }
 }

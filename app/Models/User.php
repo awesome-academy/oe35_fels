@@ -24,7 +24,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email', 
+        'email',
         'password',
         'role_id',
     ];
@@ -35,7 +35,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -69,7 +70,13 @@ class User extends Authenticatable
 
     public function words()
     {
-        return $this->belongsToMany(Word::class, 'user_word', 'user_id', 'word_id')->withTimestamps();
+        return $this->belongsToMany(Word::class, 'user_word', 'user_id', 'word_id')
+                    ->withPivot('status')->withTimestamps();
     }
 
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class, 'lesson_user', 'user_id', 'lesson_id')
+                    ->withPivot('score')->withTimestamps();
+    }
 }

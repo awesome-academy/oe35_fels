@@ -21,8 +21,6 @@ class LessonsTableSeeder extends Seeder
             DB::table('lessons')->insert([
                 'course_id' => random_int(1, $courseNumber),
                 'name' => $faker->word,
-                'score' => 0,
-                'is_passed' => false,
             ]);
         }
     }
