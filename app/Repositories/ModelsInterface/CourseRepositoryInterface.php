@@ -12,6 +12,7 @@ interface CourseRepositoryInterface extends RepositoryInterface
     // store record
     public function storeCourseJSON($request);
 
+
     // get course list for lesson
     public function getCourseList();
 
@@ -27,3 +28,6 @@ interface CourseRepositoryInterface extends RepositoryInterface
     // e-learning - user learn course
     public function learnCourse($userId, $courseId);
 }
+
+
+

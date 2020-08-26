@@ -85,4 +85,40 @@ return [
         'success' => 'Thành công!',
         'success_delete' => 'Xóa thành công!',
     ],
+    'question' => [
+        'btn_add' => 'Thêm',
+        'btn_back' => 'Trở lại',
+        'btn_trash' => 'Thùng rác',
+        'success' => 'Thành công!',
+        'not_found' => 'Không tìm thấy!',
+        'success_delete' => 'Xóa thành công!',
+        'success_restore' => 'Phục hồi thành công!',
+        'validate' => [
+            'name' => [
+                'required' => 'Yêu cầu nhập câu hỏi!',
+                'min' => 'Tối thiểu 2 ký tự!',
+                'max' => 'Tối đa 255 ký tự!',
+            ],
+            'optionA' => [
+                'required' => 'Yêu cầu nhập đáp án!',
+                'min' => 'Tối thiểu 2 ký tự',
+                'max' => 'Tối đa 255 ký tự'
+            ],
+            'optionB' => [
+                'required' => 'Yêu cầu nhập đáp án!',
+                'min' => 'Tối thiểu 2 ký tự',
+                'max' => 'Tối đa 255 ký tự'
+            ],
+            'optionC' => [
+                'required' => 'Yêu cầu nhập đáp án!',
+                'min' => 'Tối thiểu 2 ký tự',
+                'max' => 'Tối đa 255 ký tự'
+            ],
+            'optionD' => [
+                'required' => 'Yêu cầu nhập đáp án!',
+                'min' => 'Tối thiểu 2 ký tự',
+                'max' => 'Tối đa 255 ký tự'
+            ],
+        ],
+    ],
 ];

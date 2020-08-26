@@ -32,6 +32,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     Route::get('/courses-list', 'CourseController@getCourseList')->name('courses.list');
 
     Route::resource('lessons', 'LessonController');
+
+    Route::resource('question', 'QuestionController');
+    Route::get('/questions/list', 'QuestionController@getListQuestions');
+    Route::get('/questions/all-lesson', 'QuestionController@getAllLesson');
+
 });
 
 // E-learning
