@@ -39,6 +39,14 @@ return [
             'home_title' => 'Học ngoại ngữ dễ dàng',
             'home_button' => 'Bắt đầu',
         ],
+        'fels' => [
+            'popular_course_text' => 'Các khóa học phổ biến',
+            'not_found' => 'Không tìm thấy!',
+            'course_description' => 'Sẵn sàng học?',
+            'course_not_found' => 'Khóa học không có sẵn!',
+            'learned' => 'Đã học!',
+            'ask_learn' => 'Học xong?',
+        ],
     ],
     'dataTables' => [
         'add' => 'Thêm',

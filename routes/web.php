@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as' => 'homepage',
+    'uses' => 'Fels\CourseController@getPopularCourses',
+]);
 
 Auth::routes();
 
@@ -31,4 +32,28 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     Route::get('/courses-list', 'CourseController@getCourseList')->name('courses.list');
 
     Route::resource('lessons', 'LessonController');
+});
+
+// E-learning
+
+Route::group(['namespace' => 'Fels'], function () {
+    // Courses
+    Route::group(['as' => 'fels.course.'], function () {
+        Route::get('/courses', [
+            'uses' => 'CourseController@getAllCourses',
+            'as' => 'list',
+        ]);
+
+        Route::group(['middleware' => ['auth']], function () {
+            Route::get('/course/{course}', [
+                'uses' => 'CourseController@getCourseInfo',
+                'as' => 'detail',
+            ]);
+
+            Route::post('/remember-word/{wordId}', [
+                'uses' => 'CourseController@rememberWord',
+                'as' => 'remember',
+            ]);
+        });
+    });
 });

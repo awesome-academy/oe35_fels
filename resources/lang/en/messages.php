@@ -39,6 +39,14 @@ return [
             'home_title' => 'Learn Languages Easily',
             'home_button' => 'Get Started',
         ],
+        'fels' => [
+            'popular_course_text' => 'Popular Online Courses',
+            'not_found' => 'No record(s) found!',
+            'course_description' => 'Ready to learn?',
+            'course_not_found' => 'Course not available!',
+            'learned' => 'Learned!',
+            'ask_learn' => 'Learn?',
+        ],
     ],
     'dataTables' => [
         'add' => 'Add',
