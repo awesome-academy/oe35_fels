@@ -46,6 +46,12 @@ return [
             'course_not_found' => 'Course not available!',
             'learned' => 'Learned!',
             'ask_learn' => 'Learn?',
+            'lesson_not_found' => 'Lesson not found!',
+            'exam_check_error' => 'An error occurred while checking an exam!',
+            'highest_score' => 'Highest Score',
+            'result_page' => 'Result page.',
+            'link_result_page' => 'Go to result page.',
+            'choose_lesson' => 'Please choose a course to start lesson!',
         ],
     ],
     'dataTables' => [

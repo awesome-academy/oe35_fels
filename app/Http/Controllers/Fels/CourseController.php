@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Fels;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Repositories\ModelsInterface\CourseRepositoryInterface;
+use App\Repositories\ModelsInterface\LessonRepositoryInterface;
 use App\Traits\EloquentTraitable;
 use App\Traits\JsonData;
 use Illuminate\Support\Facades\Auth;
@@ -14,10 +15,14 @@ class CourseController extends Controller
     use JsonData, EloquentTraitable;
 
     private $courseRepository;
+    private $lessonRepository;
 
-    public function __construct(CourseRepositoryInterface $courseRepository)
-    {
+    public function __construct(
+        CourseRepositoryInterface $courseRepository,
+        LessonRepositoryInterface $lessonRepository
+    ) {
         $this->courseRepository = $courseRepository;
+        $this->lessonRepository = $lessonRepository;
     }
 
     // get course lists - pagination
@@ -48,7 +53,6 @@ class CourseController extends Controller
         try {
             $userId = Auth::user()->id;
             $courseId = $course->id;
-            $courseName = $course->name;
             $this->courseRepository->learnCourse($userId, $courseId);
             $words = $this->courseRepository->getCourseDetail($courseId);
 
@@ -61,9 +65,23 @@ class CourseController extends Controller
                 }
             }
 
+            $lesson = $this->lessonRepository->getLessonOfCourse($courseId);
+            if ($lesson == null) {
+                $lessonId = null;
+                $highestScore = null;
+                $totalQuestion = null;
+            } else {
+                $lessonId = $lesson->id;
+                $highestScore = $this->lessonRepository->getHighestScore($lessonId);
+                $totalQuestion = $this->lessonRepository->getTotalQuestion($lessonId);
+            }
+
             return view('front-end.courses.detail', [
-                    'courseName' => $courseName,
+                    'course' => $course,
                     'words' => $words,
+                    'highestScore' => $highestScore,
+                    'totalQuestion' => $totalQuestion,
+                    'lesson' => $lesson,
                 ]);
         } catch (\Exception $e) {
             return redirect()->route('fels.course.list')

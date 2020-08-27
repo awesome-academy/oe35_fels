@@ -36,7 +36,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     Route::resource('question', 'QuestionController');
     Route::get('/questions/list', 'QuestionController@getListQuestions');
     Route::get('/questions/all-lesson', 'QuestionController@getAllLesson');
-
 });
 
 // E-learning
@@ -60,5 +59,28 @@ Route::group(['namespace' => 'Fels'], function () {
                 'as' => 'remember',
             ]);
         });
+    });
+
+    // Lesson
+    Route::group(['as' => 'fels.lesson.', 'middleware' => ['auth']], function () {
+        Route::get('/lesson/start', [
+            'uses' => 'LessonController@chooseCourseFirst',
+            'as' => 'start',
+        ]);
+
+        Route::get('/lesson/exam/{course}', [
+            'uses' => 'LessonController@getExamLesson',
+            'as' => 'exam',
+        ]);
+
+        Route::post('/lesson/exam/check', [
+            'uses' => 'LessonController@checkExamLesson',
+            'as' => 'check',
+        ]);
+
+        Route::get('/lesson/exam/result/{lesson}', [
+            'uses' => 'LessonController@getResultLessons',
+            'as' => 'result',
+        ]);
     });
 });

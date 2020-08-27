@@ -9,4 +9,7 @@ return [
         'course' => 6,
         'course_word' => 10,
     ],
+    'learned' => '1',
+    'n_a' => 'N/A',
+    'order_score' => 'DESC',
 ];
