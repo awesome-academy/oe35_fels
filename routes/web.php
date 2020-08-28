@@ -83,4 +83,24 @@ Route::group(['namespace' => 'Fels'], function () {
             'as' => 'result',
         ]);
     });
+
+    // User
+    Route::group(['as' => 'fels.user.'], function () {
+        Route::get('/user/{user}', [
+            'uses' => 'UserController@getProfile',
+            'as' => 'profile',
+        ]);
+
+        Route::group(['middleware' => ['auth']], function () {
+            Route::put('/user/update-info', [
+                'uses' => 'UserController@updateInfo',
+                'as' => 'update-info',
+            ]);
+
+            Route::put('/user/update-password', [
+                'uses' => 'UserController@updatePassword',
+                'as' => 'update-password',
+            ]);
+        });
+    });
 });

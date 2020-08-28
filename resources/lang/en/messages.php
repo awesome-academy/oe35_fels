@@ -17,6 +17,9 @@ return [
         'remember_me' => 'Remember Me',
         'forgot_password' => 'Forgot Your Password?',
         'send_password_link' => 'Send Password Reset Link',
+        'gender' => 'Gender',
+        'avatar' => 'Avatar',
+        'old_password' => 'Old Password',
     ],
     'verify' => [
         'email' => 'Verify Your Email Address',
@@ -52,6 +55,26 @@ return [
             'result_page' => 'Result page.',
             'link_result_page' => 'Go to result page.',
             'choose_lesson' => 'Please choose a course to start lesson!',
+        ],
+        'user' => [
+            'setting' => 'Setting',
+            'name' => 'Name',
+            'email' => 'Email',
+            'gender' => 'Gender',
+            'update_btn' => 'Update',
+        ],
+        'profile' => [
+            'text' => 'Profile',
+            'detail' => 'Profile Details',
+            'update' => 'Update Profile',
+            'update_success' => 'Successfully updated!',
+            'update_error' => 'An error occurred when update!',
+            'password_error_diff' => 'New password cannot be the same as old password.',
+            'password_not_match' => 'Current password not match.',
+        ],
+        'gender' => [
+            'male' => 'Male',
+            'female' => 'Female',
         ],
     ],
     'dataTables' => [
@@ -108,22 +131,22 @@ return [
             'optionA' => [
                 'required' => 'Option A is required!',
                 'min' => 'Minimum length is 2',
-                'max' => 'Maximum length is 255'
+                'max' => 'Maximum length is 255',
             ],
             'optionB' => [
                 'required' => 'Option B is required!',
                 'min' => 'Minimum length is 2',
-                'max' => 'Maximum length is 255'
+                'max' => 'Maximum length is 255',
             ],
             'optionC' => [
                 'required' => 'Option B is required!',
                 'min' => 'Minimum length is 2',
-                'max' => 'Maximum length is 255'
+                'max' => 'Maximum length is 255',
             ],
             'optionD' => [
                 'required' => 'Option B is required!',
                 'min' => 'Minimum length is 2',
-                'max' => 'Maximum length is 255'
+                'max' => 'Maximum length is 255',
             ],
         ],
     ],

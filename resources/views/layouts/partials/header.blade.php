@@ -33,10 +33,12 @@
                                         @guest
                                             <a class="dropdown-item" href="{{ route('login') }}">@lang('messages.login')</a>
                                             @if (Route::has('register'))
-                                                <a class="dropdown-item" href="#{{ route('register') }}">@lang('messages.register')</a>
+                                                <a class="dropdown-item" href="{{ route('register') }}">@lang('messages.register')</a>
                                             @endif
                                         @else
-                                            <a class="dropdown-item" href="#">@lang('messages.front_end.nav.profile')</a>
+                                        <a class="dropdown-item" href="{{ route('fels.user.profile', Auth::user()->profile) }}">
+                                                @lang('messages.front_end.nav.profile')
+                                        </a>
                                             <a class="dropdown-item" href="javascript:void(0)" id="btn_logout">@lang('messages.logout')</a>
                                         @endguest
                                     </div>

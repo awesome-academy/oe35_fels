@@ -1,0 +1,239 @@
+/*********************************
+1. Profile
+*********************************/
+.tab_panel
+{
+	display: none !important;
+}
+.profile_cover
+{
+	width: 100%;
+	padding-top: 130px;
+}
+.cover
+{
+	width: 100%;
+}
+.cover_container
+{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.profile
+{
+	padding-top: 54px;
+	padding-bottom: 80px;
+	background: #f8f8f8;
+}
+.profile_details
+{
+	width: 100%;
+	padding-right: 68px;
+}
+.profile_details_title
+{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	color: rgba(0,0,0,0.8);
+}
+.profile_details ul
+{
+	-webkit-columns: 2;
+  	-moz-columns: 2;
+	columns: 2;
+	margin-top: 26px;
+}
+.profile_details ul li
+{
+	position: relative;
+	margin-bottom: 17px;
+	padding-left: 33px;
+}
+.profile_details ul li span
+{
+	font-size: 16px;
+	font-weight: 600;
+	color: rgba(0,0,0,0.4);
+}
+.profile_details ul li img
+{
+	width: 200px;
+	height: 200px;
+	vertical-align: middle;
+}
+.profile_form_container
+{
+	/* position: absolute; */
+	right: 15px;
+	bottom: 20px;
+	width: calc(100% - 30px);
+	background: #FFFFFF;
+	border: solid 1px #ebebeb;
+	padding-top: 38px;
+	padding-left: 49px;
+	padding-right: 49px;
+	padding-bottom: 70px;
+}
+.form_title
+{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	color: rgba(0,0,0,0.9);
+}
+.profile_row
+{
+	margin-top: 38px;
+}
+.profile_col
+{
+	margin-bottom: 39px;
+}
+.profile_col:nth-child(odd)
+{
+	padding-right: 20px;
+}
+.profile_col:nth-child(even)
+{
+	padding-left: 20px;
+}
+.form_input
+{
+	width: 100%;
+	height: 36px;
+	background: transparent;
+	border: none;
+	outline: none;
+	border-bottom: solid 1px #b2b2b2;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.form_text
+{
+	height: 101px;
+	padding-top: 13px;
+}
+.form_input:hover,
+.form_input:focus
+{
+	border-bottom: solid 2px #2e21df;
+}
+.form_input::-webkit-input-placeholder
+{
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	color: rgba(0,0,0,0.4) !important;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.form_input:-moz-placeholder
+{
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	color: rgba(0,0,0,0.4) !important;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.form_input::-moz-placeholder
+{
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	color: rgba(0,0,0,0.4) !important;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.form_input:-ms-input-placeholder
+{
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	color: rgba(0,0,0,0.4) !important;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.form_input::input-placeholder
+{
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	color: rgba(0,0,0,0.4) !important;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+/*Input Hover*/
+.form_input:hover::-webkit-input-placeholder,
+.form_input:focus::-webkit-input-placeholder
+{
+	color: rgba(0,0,0,0.8) !important;
+}
+.form_input:hover:-moz-placeholder,
+.form_input:focus:-moz-placeholder
+{
+	color: rgba(0,0,0,0.8) !important;
+}
+.form_input:hover::-moz-placeholder,
+.form_input:focus::-moz-placeholder
+{
+	color: rgba(0,0,0,0.8) !important;
+}
+.form_input:hover:-ms-input-placeholder,
+.form_input:focus:-ms-input-placeholder
+{
+	color: rgba(0,0,0,0.8) !important;
+}
+.form_input:hover::input-placeholder,
+.form_input:focus::input-placeholder
+{
+	color: rgba(0,0,0,0.8) !important;
+}
+.form_button
+{
+	width: 100%;
+	height: 43px;
+	background: #2e21df;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	border-radius: 3px;
+	margin-top: 44px;
+}
+.form_button:hover
+{
+	box-shadow: 0px 10px 40px rgba(0,0,0,0.3);
+}
+.form_button:focus
+{
+	outline: none;
+}
+.member_image
+{
+	width: 200px;
+	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+}

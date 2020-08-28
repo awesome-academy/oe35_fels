@@ -22,9 +22,15 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\ModelsInterface\CourseRepositoryInterface::class,
             \App\Repositories\Eloquent\Impl\CourseEloquentRepository::class,
         );
+
         $this->app->singleton(
             \App\Repositories\ModelsInterface\LessonRepositoryInterface::class,
             \App\Repositories\Eloquent\Impl\LessonEloquentRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\ModelsInterface\UserRepositoryInterface::class,
+            \App\Repositories\Eloquent\Impl\UserEloquentRepository::class
         );
     }
 

@@ -12,4 +12,11 @@ return [
     'learned' => '1',
     'n_a' => 'N/A',
     'order_score' => 'DESC',
+    'gender' => [
+        'male' => '1',
+        'female' => '0',
+    ],
+    'default_avatar' => 'avatar.png',
+    'profile_path' => public_path('/profile/'),
+    'avatar_link' => public_path('/profile/avatar.png'),
 ];
