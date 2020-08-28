@@ -46,6 +46,12 @@ return [
             'course_not_found' => 'Khóa học không có sẵn!',
             'learned' => 'Đã học!',
             'ask_learn' => 'Học xong?',
+            'lesson_not_found' => 'Không có bài kiểm tra!',
+            'exam_check_error' => 'Lỗi khi chấm bài kiểm tra!',
+            'highest_score' => 'Điểm cao nhất',
+            'result_page' => 'Trang kết quả.',
+            'link_result_page' => 'Đến trang kết quả.',
+            'choose_lesson' => 'Hãy chọn một khóa học để bắt đầu bài kiểm tra!',
         ],
     ],
     'dataTables' => [

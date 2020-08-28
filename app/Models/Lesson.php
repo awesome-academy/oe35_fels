@@ -30,4 +30,14 @@ class Lesson extends Model
         return $this->belongsToMany(User::class, 'lesson_user', 'lesson_id', 'user_id')
                     ->withPivot('score')->withTimestamps();
     }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }
