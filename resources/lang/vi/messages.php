@@ -17,6 +17,9 @@ return [
         'remember_me' => 'Ghi nhớ đăng nhập',
         'forgot_password' => 'Quên mật khẩu?',
         'send_password_link' => 'Gửi đường dẫn khôi phục mật khẩu',
+        'gender' => 'Giới tính',
+        'avatar' => 'Ảnh đại diện',
+        'old_password' => 'Mật khẩu cũ',
     ],
     'verify' => [
         'email' => 'Xác nhận địa chỉ email',
@@ -52,6 +55,26 @@ return [
             'result_page' => 'Trang kết quả.',
             'link_result_page' => 'Đến trang kết quả.',
             'choose_lesson' => 'Hãy chọn một khóa học để bắt đầu bài kiểm tra!',
+        ],
+        'user' => [
+            'setting' => 'Cài đặt',
+            'name' => 'Tên',
+            'email' => 'Email',
+            'gender' => 'Giới tính',
+            'update_btn' => 'Cập nhật',
+        ],
+        'profile' => [
+            'text' => 'Hồ sơ cá nhân',
+            'detail' => 'Hồ sơ chi tiết',
+            'update' => 'Cập nhật hồ sơ cá nhân',
+            'update_success' => 'Cập nhật thành công!',
+            'update_error' => 'Cập nhật lỗi!',
+            'password_error_diff' => 'Mật khẩu mới phải khác mật khẩu cũ.',
+            'password_not_match' => 'Mật khẩu mới không trùng khớp.',
+        ],
+        'gender' => [
+            'male' => 'Nam',
+            'female' => 'Nữ',
         ],
     ],
     'dataTables' => [
@@ -108,22 +131,22 @@ return [
             'optionA' => [
                 'required' => 'Yêu cầu nhập đáp án!',
                 'min' => 'Tối thiểu 2 ký tự',
-                'max' => 'Tối đa 255 ký tự'
+                'max' => 'Tối đa 255 ký tự',
             ],
             'optionB' => [
                 'required' => 'Yêu cầu nhập đáp án!',
                 'min' => 'Tối thiểu 2 ký tự',
-                'max' => 'Tối đa 255 ký tự'
+                'max' => 'Tối đa 255 ký tự',
             ],
             'optionC' => [
                 'required' => 'Yêu cầu nhập đáp án!',
                 'min' => 'Tối thiểu 2 ký tự',
-                'max' => 'Tối đa 255 ký tự'
+                'max' => 'Tối đa 255 ký tự',
             ],
             'optionD' => [
                 'required' => 'Yêu cầu nhập đáp án!',
                 'min' => 'Tối thiểu 2 ký tự',
-                'max' => 'Tối đa 255 ký tự'
+                'max' => 'Tối đa 255 ký tự',
             ],
         ],
     ],
