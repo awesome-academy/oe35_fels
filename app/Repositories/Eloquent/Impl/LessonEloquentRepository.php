@@ -67,10 +67,12 @@ class LessonEloquentRepository extends EloquentRepository implements LessonRepos
             $lessonId = $request['lessonId'];
             $score = 0;
 
-            foreach ($request['answer'] as $value) {
-                $result = Option::select('is_correct')->find($value)->get();
-                if ($result->is_correct == '1') {
-                    $score++;
+            if (isset($request['answer'])) {
+                foreach ($request['answer'] as $value) {
+                    $result = Option::select('is_correct')->find($value);
+                    if ($result->is_correct == config('const.correct_answer')) {
+                        $score++;
+                    }
                 }
             }
 
@@ -124,7 +126,8 @@ class LessonEloquentRepository extends EloquentRepository implements LessonRepos
         try {
             $user = Auth::user();
             $data = $user->lessons()->wherePivot('lesson_id', $lessonId)
-                        ->latest()->paginate(config('const.pagination.course_word'));
+                    ->orderBy('pivot_updated_at', config('const.order_score'))
+                    ->paginate(config('const.pagination.course_word'));
 
             return $data;
         } catch (\Exception $e) {

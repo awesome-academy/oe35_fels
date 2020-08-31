@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Repositories\Eloquent\EloquentRepository;
 use App\Repositories\ModelsInterface\UserRepositoryInterface;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
@@ -98,6 +99,39 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             $image->move($path, $imageName);
 
             return $imageName;
+        } catch (\Exception $e) {
+            return $this->errroResult($e->getMessage());
+        }
+    }
+
+    // get word statistics
+    public function getUserCountStatistic($userId, $related)
+    {
+        try {
+            $resultCount = $this->model->whereId($userId)->withCount($related)->first();
+
+            return $resultCount;
+        } catch (\Exception $e) {
+            return $this->errroResult($e->getMessage());
+        }
+    }
+
+    // get total word by month in a year
+    public function getTotalWordMonth($userId)
+    {
+        try {
+            $result = DB::table('user_word')
+            ->select(
+                DB::raw('count(status) as `totalWord`'),
+                DB::raw('MONTH(created_at) month')
+            )
+            ->where(DB::raw('user_id'), '=', $userId)
+            ->where(DB::raw('status'), config('const.learned'))
+            ->where(DB::raw('YEAR(created_at)'), config('const.year'))
+            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->get();
+
+            return $result;
         } catch (\Exception $e) {
             return $this->errroResult($e->getMessage());
         }

@@ -116,4 +116,19 @@ Route::group(['namespace' => 'Fels'], function () {
             'as' => 'filter',
         ]);
     });
+
+    // Statistics
+    Route::group(['as' => 'fels.statistic.'], function () {
+        Route::group(['middleware' => ['auth']], function () {
+            Route::get('/statistic', [
+                'uses' => 'StatisticController@showStatistics',
+                'as' => 'statistic',
+            ]);
+
+            Route::get('/statistic/chart-data', [
+                'uses' => 'StatisticController@getChartData',
+                'as' => 'chart-data',
+            ]);
+        });
+    });
 });

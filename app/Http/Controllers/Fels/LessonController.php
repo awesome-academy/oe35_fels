@@ -43,12 +43,13 @@ class LessonController extends Controller
     {
         $data = $request->all();
         $result = $this->lessonRepository->checkResult($data);
+        $lesson = $this->lessonRepository->findById($request->lessonId);
 
         if (isset($result['errorMsg'])) {
             return back()->with('error', trans('messages.front_end.fels.exam_check_error'));
         }
 
-        return redirect()->route('fels.lesson.result');
+        return redirect()->route('fels.lesson.result', $lesson);
     }
 
     // get all result of lesson
