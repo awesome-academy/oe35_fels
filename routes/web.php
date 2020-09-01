@@ -103,4 +103,17 @@ Route::group(['namespace' => 'Fels'], function () {
             ]);
         });
     });
+
+    //word
+    Route::group(['as' => 'fels.word.', 'middleware' => ['auth']], function () {
+        Route::get('/word', [
+            'uses' => 'WordPageController@index',
+            'as' => 'index',
+        ]);
+
+        Route::post('/word/filter', [
+            'uses' => 'WordPageController@filterWord',
+            'as' => 'filter',
+        ]);
+    });
 });

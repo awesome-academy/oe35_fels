@@ -15,7 +15,7 @@
                             <li class="active"><a href="{{ route('homepage') }}">@lang('messages.front_end.nav.home')</a></li>
                                 <li><a href="{{ route('fels.course.list') }}">@lang('messages.front_end.nav.courses')</a></li>
                                 @auth
-                                <li><a href="#">@lang('messages.front_end.nav.word_list')</a></li>
+                                <li><a href="{{ route('fels.word.index') }}">@lang('messages.front_end.nav.word_list')</a></li>
                                 <li><a href="{{ route('fels.lesson.start') }}" >@lang('messages.front_end.nav.start_lesson')</a></li>
                                 <li><a href="#">@lang('messages.front_end.nav.storyboard')</a></li>
                                 @endauth

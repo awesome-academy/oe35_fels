@@ -1,0 +1,24 @@
+.word-list-table{
+    /* margin-top: 100px; */
+    height: 100vh;
+}
+.card{
+    height: 100vh;
+    overflow-y: scroll;
+}
+.card ul li:hover{
+    color: #000;
+    background-color: rgba(118, 208, 214, 0.76); 
+}
+.user-profile{
+    background-color: rgba(88, 156, 158, 0.849);
+    height: 100vh;
+}
+.card-img-user{
+    width: 100px;
+    /* height: auto; */
+}
+
+#filter{
+    width: 200px;
+}
