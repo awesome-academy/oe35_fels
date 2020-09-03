@@ -19,6 +19,10 @@ Route::get('/', [
     'uses' => 'Fels\CourseController@getPopularCourses',
 ]);
 
+// Socialite Login
+Route::get('/auth/{driver}', 'Auth\SocialController@redirectToProvider')->name('social.redirect');
+Route::get('/callback/{driver}', 'Auth\SocialController@handleProviderCallback')->name('social.callback');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -17,7 +17,11 @@
                     <div class="profile_details_title">@lang('messages.front_end.profile.detail')</div>
                     <ul>
                         <li>
+                            @if (isset(Auth::user()->social))
+                            <img src="{{ $profile->avatar }}" alt="">
+                            @else
                             <img src="{{ asset('profile/' . $profile->avatar) }}" alt="">
+                            @endif
                         </li>
                         <li>
                             <p>@lang('messages.front_end.user.name'): </p>
@@ -31,8 +35,10 @@
                             <p>@lang('messages.front_end.user.gender'): </p>
                             @if ($profile->gender == config('const.gender.male'))
                                 <span>@lang('messages.front_end.gender.male')</span>
-                            @else
+                            @elseif($profile->gender == config('const.gender.female'))
                                 <span>@lang('messages.front_end.gender.female')</span>
+                            @else
+                                <span>@lang('messages.front_end.gender.other')</span>
                             @endif
                         </li>
                     </ul>
@@ -58,6 +64,9 @@
                     <div class="tab_panel active">
                         <div class="profile_form_container">
                             <div class="form_title">@lang('messages.front_end.profile.update')</div>
+                            @if (isset(Auth::user()->social))
+                            <div class="panel_text">@lang('messages.social.social_profile')</div>
+                            @else
                             <form action="{{ route('fels.user.update-info') }}" method="POST" class="profile_form" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -94,6 +103,7 @@
                                     </div>
                                 </div>
                             </form>
+                            @endif
                         </div>
                     </div>
 

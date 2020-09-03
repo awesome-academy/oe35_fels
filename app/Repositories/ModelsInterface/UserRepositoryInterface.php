@@ -20,4 +20,7 @@ interface UserRepositoryInterface extends RepositoryInterface
 
     // get total word by month in a year
     public function getTotalWordMonth($userId);
+
+    // find or create user login
+    public function findOrCreateUser($user, $driver);
 }

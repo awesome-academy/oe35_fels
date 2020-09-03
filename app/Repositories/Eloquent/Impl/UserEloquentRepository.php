@@ -136,4 +136,49 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             return $this->errroResult($e->getMessage());
         }
     }
+
+    // find or create user login
+    public function findOrCreateUser($providerUser, $driver)
+    {
+        try {
+            $providerEmail = $providerUser->getEmail();
+            $providerAvatar = $providerUser->getAvatar();
+            $providerName = $providerUser->getName();
+            $authUser =  $this->model->whereEmail($providerEmail)->first();
+            if ($authUser) {
+                // update user info
+                $profile = $authUser->profile;
+                $profile->avatar = $providerAvatar;
+                $profile->name = $providerName;
+                $authUser->social->access_token = $providerUser->token;
+
+                $authUser->push();
+            } else {
+                // create a new user
+                $authUser = $this->model->create([
+                    'role_id' => config('const.seeder.role_id'),
+                    'email' => $providerEmail,
+                    'email_verified_at' => \Carbon\Carbon::now(),
+                    'password' => bcrypt($providerEmail),
+                ]);
+
+                // linked user info
+                $socialAccount = new \App\Models\Social();
+                $socialAccount->provider_id = $providerUser->getId();
+                $socialAccount->provider_name = $driver;
+                $socialAccount->access_token = $providerUser->token;
+                $authUser->social()->save($socialAccount);
+
+                // profile info
+                $profile = new \App\Models\Profile();
+                $profile->name = $providerName;
+                $profile->avatar = $providerAvatar;
+                $authUser->profile()->save($profile);
+            }
+
+            return $authUser;
+        } catch (\Exception $e) {
+            return $this->errroResult($e->getMessage());
+        }
+    }
 }

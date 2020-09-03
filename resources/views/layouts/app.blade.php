@@ -66,6 +66,11 @@
         </nav>
 
         <main class="py-4">
+            <!-- Message notification -->
+            <div class="language">
+                @include('layouts.partials.message')
+            </div>
+
             @yield('content')
         </main>
     </div>

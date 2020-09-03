@@ -23,4 +23,7 @@ return [
     'order_course' => 'ASC',
     'year' => '2020',
     'correct_answer' => '1',
+    'provider' => [
+        'google',
+    ],
 ];
