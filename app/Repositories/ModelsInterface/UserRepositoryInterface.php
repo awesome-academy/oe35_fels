@@ -14,4 +14,10 @@ interface UserRepositoryInterface extends RepositoryInterface
 
     // process image update
     public function processImage($profile, $image);
+
+    // get word statistics
+    public function getUserCountStatistic($userId, $related);
+
+    // get total word by month in a year
+    public function getTotalWordMonth($userId);
 }
