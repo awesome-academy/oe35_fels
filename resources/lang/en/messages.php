@@ -98,6 +98,11 @@ return [
             'course_learned' => 'Course Learned',
             'lesson' => 'Lesson Finished',
         ],
+        'exam' => [
+            'time_left' => 'Time left',
+            'time_up' => 'Time is up!',
+            'submit_text' => 'The test will automatically submit',
+        ],
     ],
     'chart' => [
         'label' => [

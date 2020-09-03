@@ -19,8 +19,12 @@
                     <div class="cur_item">
                         <div class="cur_title_container d-flex flex-row align-items-start justify-content-start">
                             <div class="cur_title">{{ $lesson->name }}</div>
+                            <div class="cur_num ml-auto">
+                                <span>@lang('messages.front_end.exam.time_left')</span>
+                                <span id="clock" class="cur_item_title"></span>
+                            </div>
                         </div>
-                        <form action="{{ route('fels.lesson.check') }}" method="post">
+                        <form action="{{ route('fels.lesson.check') }}" method="post" id="lessonForm">
                             @csrf
                             @forelse ($lesson->questions as $question)
                             <div class="cur_item_content">
@@ -68,3 +72,15 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+    <script>
+        var time = {{ config('const.exam_time') }};
+        var lessonFormId = 'lessonForm';
+        var clockId = 'clock';
+        var swalTitle = '{{ trans('messages.front_end.exam.time_up') }}';
+        var swalText = '{{ trans('messages.front_end.exam.submit_text') }}';
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="{{ asset('js/timer.js') }}"></script>
+@endpush

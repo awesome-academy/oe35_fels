@@ -98,6 +98,11 @@ return [
             'course_learned' => 'Khóa học đã hoàn thành',
             'lesson' => 'Bài làm đã hoàn thành',
         ],
+        'exam' => [
+            'time_left' => 'Thời gian còn lại',
+            'time_up' => 'Hết giờ!',
+            'submit_text' => 'Bài kiểm tra sẽ tự động được gửi',
+        ],
     ],
     'chart' => [
         'label' => [

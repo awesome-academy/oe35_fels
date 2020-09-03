@@ -26,4 +26,5 @@ return [
     'provider' => [
         'google',
     ],
+    'exam_time' => '10', // minutes
 ];
