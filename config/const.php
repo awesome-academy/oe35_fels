@@ -27,4 +27,8 @@ return [
         'google',
     ],
     'exam_time' => '10', // minutes
+    'locale' => [
+        'vi' => 'vi',
+        'en' => 'en',
+    ],
 ];

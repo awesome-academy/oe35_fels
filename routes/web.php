@@ -23,6 +23,8 @@ Route::get('/', [
 Route::get('/auth/{driver}', 'Auth\SocialController@redirectToProvider')->name('social.redirect');
 Route::get('/callback/{driver}', 'Auth\SocialController@handleProviderCallback')->name('social.callback');
 
+Route::post('/lang', 'LocaleController')->name('locale');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
