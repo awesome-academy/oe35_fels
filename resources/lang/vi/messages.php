@@ -87,6 +87,7 @@ return [
         'gender' => [
             'male' => 'Nam',
             'female' => 'Nữ',
+            'other' => 'Khác',
         ],
         'storyboard' => [
             'title' => 'Trang thống kê cá nhân',
@@ -113,6 +114,11 @@ return [
             'nov' => 'tháng mười một',
             'dec' => 'tháng mười hai',
         ],
+    ],
+    'social' => [
+        'unknown_error' => 'Lỗi không xác định. Vui lòng thử lại sau!',
+        'not_support_driver' => 'không hỗ trợ đăng nhập :driver !',
+        'social_profile' => 'Vui lòng cập nhật thông tin bằng tài khoản xã hội của bạn!',
     ],
     'dataTables' => [
         'add' => 'Thêm',

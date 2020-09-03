@@ -56,7 +56,15 @@
                                 <button type="submit" class="btn btn-primary">
                                     @lang('messages.login')
                                 </button>
+                                <a href="{{ route('social.redirect', config('const.provider')[0]) }}"
+                                    class="btn btn-secondary">
+                                    <i class="fab fa-google"></i> {{ config('const.provider')[0] }}
+                                </a>
 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         @lang('messages.input_form.forgot_password')

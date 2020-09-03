@@ -87,6 +87,7 @@ return [
         'gender' => [
             'male' => 'Male',
             'female' => 'Female',
+            'other' => 'Other',
         ],
         'storyboard' => [
             'title' => 'Storyboard',
@@ -113,6 +114,11 @@ return [
             'nov' => 'Nov',
             'dec' => 'Dec',
         ],
+    ],
+    'social' => [
+        'unknown_error' => 'Unknown error. Please try later!',
+        'not_support_driver' => ':driver login not support!',
+        'social_profile' => 'Please update information with your social account!',
     ],
     'dataTables' => [
         'add' => 'Add',

@@ -27,6 +27,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'email_verified_at',
     ];
 
     /**
@@ -48,7 +49,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function socials()
+    public function social()
     {
         return $this->hasOne(Social::class, 'user_id', 'id');
     }
