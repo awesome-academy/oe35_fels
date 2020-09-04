@@ -125,6 +125,10 @@ return [
         'not_support_driver' => ':driver login not support!',
         'social_profile' => 'Please update information with your social account!',
     ],
+    'locale' => [
+        'en' => 'English',
+        'vi' => 'Vietnamese',
+    ],
     'dataTables' => [
         'add' => 'Add',
         'back' => 'Back',

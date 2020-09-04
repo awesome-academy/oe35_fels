@@ -29,7 +29,7 @@
                                             <span class="cur_title">{{ $lesson->pivot->score }}/{{ $totalQuestion }}</span>
                                         </div>
                                         <div class="cur_time ml-auto cur_item_title">
-                                            <span>{{ $lesson->pivot->created_at }}</span>
+                                            <span>{{ customDateFormat($lesson->pivot->created_at) }}</span>
                                         </div>
                                     </li>
                                 </ul>

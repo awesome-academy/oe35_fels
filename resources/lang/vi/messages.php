@@ -125,6 +125,10 @@ return [
         'not_support_driver' => 'không hỗ trợ đăng nhập :driver !',
         'social_profile' => 'Vui lòng cập nhật thông tin bằng tài khoản xã hội của bạn!',
     ],
+    'locale' => [
+        'en' => 'Tiếng Anh',
+        'vi' => 'Tiếng Việt',
+    ],
     'dataTables' => [
         'add' => 'Thêm',
         'back' => 'Trở lại',

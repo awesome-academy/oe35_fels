@@ -25,22 +25,45 @@
 
                             <!-- Hamburger -->
                             <div class="account align-items-center">
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle" href="#" role="button" id="userName"
-                                        data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">@lang('messages.front_end.nav.account')</a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                        @guest
-                                            <a class="dropdown-item" href="{{ route('login') }}">@lang('messages.login')</a>
-                                            @if (Route::has('register'))
-                                                <a class="dropdown-item" href="{{ route('register') }}">@lang('messages.register')</a>
-                                            @endif
-                                        @else
-                                        <a class="dropdown-item" href="{{ route('fels.user.profile', Auth::user()->profile) }}">
-                                                @lang('messages.front_end.nav.profile')
-                                        </a>
-                                            <a class="dropdown-item" href="javascript:void(0)" id="btn_logout">@lang('messages.logout')</a>
-                                        @endguest
+                                <div class="d-flex flex-col align-items-start justify-content-start">
+                                    <div class="col">
+                                        <form method="POST" action="{{ route('locale') }}">
+                                            @csrf
+                                            @php
+                                                $en = config('const.locale.en');
+                                                $vi = config('const.locale.vi');
+                                            @endphp
+                                            <select onchange="this.form.submit()" name="locale">
+                                                <option value="{{ $en }}"
+                                                    {{ app()->isLocale($en) ? 'selected' : '' }}>
+                                                    @lang('messages.locale.en')
+                                                </option>
+                                                <option value="{{ $vi }}"
+                                                    {{ app()->isLocale($vi) ? 'selected' : '' }}>
+                                                    @lang('messages.locale.vi')
+                                                </option>
+                                            </select>
+                                        </form>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="dropdown col">
+                                            <a class="dropdown-toggle" href="#" role="button" id="userName"
+                                                data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">@lang('messages.front_end.nav.account')</a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
+                                                @guest
+                                                    <a class="dropdown-item" href="{{ route('login') }}">@lang('messages.login')</a>
+                                                    @if (Route::has('register'))
+                                                        <a class="dropdown-item" href="{{ route('register') }}">@lang('messages.register')</a>
+                                                    @endif
+                                                @else
+                                                <a class="dropdown-item" href="{{ route('fels.user.profile', Auth::user()->profile) }}">
+                                                        @lang('messages.front_end.nav.profile')</a>
+                                                <a class="dropdown-item" href="javascript:void(0)" id="btn_logout">@lang('messages.logout')</a>
+                                                @endguest
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
