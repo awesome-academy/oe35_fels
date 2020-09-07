@@ -9,7 +9,6 @@ class Word extends Model
     protected $fillable = [
         'name',
         'mean',
-        'is_learned',
         'course_id',
     ];
 
