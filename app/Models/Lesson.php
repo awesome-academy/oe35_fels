@@ -10,8 +10,6 @@ class Lesson extends Model
 {
     protected $fillable = [
         'name',
-        'score',
-        'is_passed',
         'course_id',
     ];
 
