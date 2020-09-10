@@ -81,17 +81,27 @@ class CourseEloquentRepository extends EloquentRepository implements CourseRepos
     }
 
     // e-learning - get course detail and words
-    public function getCourseDetail($courseId)
+    public function getWordsAndStatusByCourse($userId, $courseId)
     {
         try {
-            $result = $this->findById($courseId)->words()->where('course_id', $courseId)
+            $words = $this->findById($courseId)->words()->where('course_id', $courseId)
                             ->paginate(config('const.pagination.course_word'));
+            foreach ($words as $word) {
+                $record = $word->rememberWord($userId, $word->id)->first();
+                if ($record == null) {
+                    $word->is_learned = null;
+                } else {
+                    $word->is_learned = $record->pivot->status;
+                }
+            }
 
-            return $result;
+            return $words;
         } catch (\Exception $e) {
             return $this->errroResult($e->getMessage());
         }
     }
+
+
 
     // e-learning - user learn course
     public function learnCourse($userId, $courseId)
@@ -110,5 +120,17 @@ class CourseEloquentRepository extends EloquentRepository implements CourseRepos
             return $this->errroResult($e->getMessage());
         }
     }
-}
 
+    // user remember word
+    public function learnWord($userId, $wordId)
+    {
+        try {
+            $user = $this->findById($userId);
+            $result = $user->words()->attach($wordId, ['status' => true]);
+
+            return $result;
+        } catch (\Exception $e) {
+            return $this->errroResult($e->getMessage());
+        }
+    }
+}

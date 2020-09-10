@@ -62,7 +62,9 @@
                                         <span class="info-box-text">
                                             @lang('messages.front_end.storyboard.word_learned')
                                         </span>
-                                        <span class="info-box-number">{{ $totalWord->words_count }}</span>
+                                        <span class="info-box-number">
+                                            {{ isset($userStatistic->words_count) ? $userStatistic->words_count : config('const.n_a') }}
+                                        </span>
                                     </div>
                                     <!-- /.info-box-content -->
                                 </div>
@@ -74,7 +76,9 @@
                                         <span class="info-box-text">
                                             @lang('messages.front_end.storyboard.course_learned')
                                         </span>
-                                        <span class="info-box-number">{{ $totalCourse->courses_count }}</span>
+                                        <span class="info-box-number">
+                                            {{ isset($userStatistic->courses_count) ? $userStatistic->courses_count : config('const.n_a') }}
+                                        </span>
                                     </div>
                                     <!-- /.info-box-content -->
                                 </div>
@@ -86,7 +90,9 @@
                                         <span class="info-box-text">
                                             @lang('messages.front_end.storyboard.lesson')
                                         </span>
-                                        <span class="info-box-number">{{ $totalLesson->lessons_count }}</span>
+                                        <span class="info-box-number">
+                                            {{ isset($userStatistic->lessons_count) ? $userStatistic->lessons_count : config('const.n_a') }}
+                                        </span>
                                     </div>
                                     <!-- /.info-box-content -->
                                 </div>

@@ -66,7 +66,7 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
                     $result = false;
                 }
             } else {
-                $result= null;
+                $result = null;
             }
 
             return $result;
@@ -104,13 +104,36 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
         }
     }
 
-    // get word statistics
-    public function getUserCountStatistic($userId, $related)
+    // get relationship with count
+    public function getCountRelated($userId, $related)
     {
         try {
             $resultCount = $this->model->whereId($userId)->withCount($related)->first();
 
             return $resultCount;
+        } catch (\Exception $e) {
+            return $this->errroResult($e->getMessage());
+        }
+    }
+
+    // get count statistics
+    public function getUserCountStatistic($userId, $related)
+    {
+        try {
+            $countStatistic = collect();
+            if (is_array($related)) {
+                foreach ($related as $value) {
+                    $data = $this->getCountRelated($userId, $value);
+                    $countName = $value . '_count';
+                    if (isset($data['errorMsg'])) {
+                        $countStatistic->$countName = config('const.n_a');
+                    } else {
+                        $countStatistic->$countName = $data->$countName;
+                    }
+                }
+            }
+
+            return $countStatistic;
         } catch (\Exception $e) {
             return $this->errroResult($e->getMessage());
         }

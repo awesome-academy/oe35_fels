@@ -54,36 +54,23 @@ class CourseController extends Controller
             $userId = Auth::user()->id;
             $courseId = $course->id;
             $this->courseRepository->learnCourse($userId, $courseId);
-            $words = $this->courseRepository->getCourseDetail($courseId);
-
-            foreach ($words as $word) {
-                $record = $word->rememberWord($userId, $word->id)->first();
-                if ($record == null) {
-                    $word->is_learned = null;
-                } else {
-                    $word->is_learned = $record->pivot->status;
-                }
+            // get all words belong to this course
+            $words = $this->courseRepository->getWordsAndStatusByCourse($userId, $courseId);
+            if (isset($words['errorMsg'])) {
+                $words = collect(); // make empty collection
             }
-
-            $lesson = $this->lessonRepository->getLessonOfCourse($courseId);
-            if ($lesson == null) {
-                $lessonId = null;
-                $highestScore = null;
-                $totalQuestion = null;
-            } else {
-                $lessonId = $lesson->id;
-                $highestScore = $this->lessonRepository->getHighestScore($lessonId);
-                $totalQuestion = $this->lessonRepository->getTotalQuestion($lessonId);
-            }
+            // get related lesson by course
+            $lesson = $this->lessonRepository->getLessonAndStatusByCourse($courseId);
 
             return view('front-end.courses.detail', [
                     'course' => $course,
                     'words' => $words,
-                    'highestScore' => $highestScore,
-                    'totalQuestion' => $totalQuestion,
+                    'highestScore' => $lesson->highestScore,
+                    'totalQuestion' => $lesson->totalQuestion,
                     'lesson' => $lesson,
                 ]);
         } catch (\Exception $e) {
+            return view('view', ['test' => $e->getMessage()]);
             return redirect()->route('fels.course.list')
                 ->with('error', trans('messages.front_end.fels.course_not_found'));
         }
@@ -93,7 +80,11 @@ class CourseController extends Controller
     public function rememberWord($wordId)
     {
         try {
-            Auth::user()->words()->attach($wordId, ['status' => true]);
+            $userId = Auth::user()->id;
+            $result = $this->courseRepository->learnWord($userId, $wordId);
+            if (isset($result['errorMsg'])) {
+                return $this->jsonMsgResult(trans('messages.front_end.fels.no_data'), false, 500);
+            }
 
             return $this->jsonMsgResult(false, trans('messages.json.success'), 201);
         } catch (\Exception $e) {

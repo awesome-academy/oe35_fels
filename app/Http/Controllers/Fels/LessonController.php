@@ -30,7 +30,7 @@ class LessonController extends Controller
         $courseId = $course->id;
         $lesson = $this->lessonRepository->getLessonOfCourse($courseId);
 
-        if (isset($lesson['errorMsg'])) {
+        if (isset($lesson['errorMsg']) || $lesson == null) {
             return redirect()->route('fels.course.detail', $course)
                     ->with('error', trans('messages.front_end.fels.lesson_not_found'));
         }

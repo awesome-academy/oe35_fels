@@ -60,6 +60,27 @@ class LessonEloquentRepository extends EloquentRepository implements LessonRepos
         }
     }
 
+    // e-learning - get exam lesson and status of course
+    public function getLessonAndStatusByCourse($courseId)
+    {
+        try {
+            $lesson = $this->getLessonOfCourse($courseId);
+            if (isset($lesson['errorMsg']) || $lesson == null) {
+                $lesson = collect();
+                $lesson->highestScore = null;
+                $lesson->totalQuestion = null;
+            } else {
+                $lessonId = $lesson->id;
+                $lesson->highestScore = $this->getHighestScore($lessonId);
+                $lesson->totalQuestion = $this->getTotalQuestion($lessonId);
+            }
+
+            return $lesson;
+        } catch (\Exception $e) {
+            return $this->errroResult($e->getMessage());
+        }
+    }
+
     // e-learning - get exam lesson of course
     public function checkResult($request)
     {
