@@ -37,11 +37,12 @@ class CourseEloquentRepository extends EloquentRepository implements CourseRepos
         try {
             if (isset($request['record_id'])) {
                 $course = $this->findById($request['record_id']);
-
-                return $this->update($request, $course);
+                $this->update($request, $course);
+            } else {
+                $course = $this->create($request);
             }
 
-            return $this->create($request);
+            return $course;
         } catch (\Exception $e) {
             return $this->errroResult($e->getMessage());
         }

@@ -156,6 +156,7 @@ return [
             'save' => 'Save',
             'cancel' => 'Cancel',
             'ok' => 'Ok',
+            'finish' => 'Finish',
         ],
         'form' => [
             'name' => 'Name',
