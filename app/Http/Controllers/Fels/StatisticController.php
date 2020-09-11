@@ -20,26 +20,15 @@ class StatisticController extends Controller
     {
         $user = Auth::user();
         $userId = $user->id;
-
-        $totalWord = $this->userRepository->getUserCountStatistic($userId, 'words');
-        if (isset($totalWord['errorMsg'])) {
-            $totalWord->words_count = config('const.n_a');
-        }
-
-        $totalCourse = $this->userRepository->getUserCountStatistic($userId, 'courses');
-        if (isset($totalCourse['errorMsg'])) {
-            $totalCourse->words_count = config('const.n_a');
-        }
-
-        $totalLesson = $this->userRepository->getUserCountStatistic($userId, 'lessons');
-        if (isset($totalLesson['errorMsg'])) {
-            $totalLesson->words_count = config('const.n_a');
-        }
+        $related = [
+            'words',
+            'courses',
+            'lessons',
+        ];
+        $userStatistic = $this->userRepository->getUserCountStatistic($userId, $related);
 
         return view('front-end.users.storyboard', [
-            'totalWord' => $totalWord,
-            'totalCourse' => $totalCourse,
-            'totalLesson' => $totalLesson,
+            'userStatistic' => $userStatistic,
             ]);
     }
 

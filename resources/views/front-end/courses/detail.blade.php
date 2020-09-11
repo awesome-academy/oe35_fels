@@ -18,6 +18,7 @@
                 <div class="panel_text"></div>
                 <div class="curriculum_items">
                     <div class="cur_item">
+                        @if (isset($course->lesson))
                         <div class="cur_title_container d-flex flex-row align-items-start justify-content-start">
                             <div class="cur_title">
                                 <a href="{{ route('fels.lesson.exam', $course) }}" class="btn btn-primary">
@@ -31,7 +32,8 @@
                                 </span>
                             </div>
                         </div>
-                        @if ($lesson != null)
+                        @endif
+                        @if (isset($lesson->id))
                             <div class="d-flex flex-row align-items-start justify-content-start">
                                 <div class="ml-auto">
                                     <a href="{{ route('fels.lesson.result', $lesson) }}">

@@ -15,6 +15,9 @@ interface LessonRepositoryInterface extends RepositoryInterface
     // e-learning - get exam lesson of course
     public function getLessonOfCourse($courseId);
 
+    // e-learning - get exam lesson and status of course
+    public function getLessonAndStatusByCourse($courseId);
+
     // e-learning - get exam lesson of course
     public function checkResult($request);
 

@@ -23,11 +23,11 @@ interface CourseRepositoryInterface extends RepositoryInterface
     public function getPopularCourses();
 
     // e-learning - get course detail and words
-    public function getCourseDetail($courseId);
+    public function getWordsAndStatusByCourse($userId, $courseId);
 
     // e-learning - user learn course
     public function learnCourse($userId, $courseId);
+
+    // user remember word
+    public function learnWord($userId, $wordId);
 }
-
-
-
