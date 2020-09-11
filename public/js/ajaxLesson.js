@@ -21,8 +21,15 @@ var jq = new jQuery();
                     name: "name"
                 },
                 {
-                    data: "course.name",
-                    name: "course_id"
+                    data: "course_name",
+                    name: "course_id",
+                    render: function (data, type, row, meta) {
+                        if (row.course == null) {
+                            return '<i class="far fa-times-circle"></i>';
+                        } else {
+                            return row.course.name;
+                        }
+                    }
                 },
                 {
                     data: "created_at",
@@ -49,7 +56,7 @@ var jq = new jQuery();
                 }
             ],
             order: [
-                [0, "desc"]
+                [3, "desc"]
             ],
         });
     };

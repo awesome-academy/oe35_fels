@@ -26,4 +26,13 @@ interface UserRepositoryInterface extends RepositoryInterface
 
     // find or create user login
     public function findOrCreateUser($user, $driver);
+
+    // get json users
+    public function jsonUsers();
+
+    // get user
+    public function findByIdWithTrashed($id);
+
+    // restore user
+    public function restoreSoftDelete($user);
 }

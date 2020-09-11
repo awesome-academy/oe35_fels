@@ -11,10 +11,14 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+                @if (isset(Auth::user()->social->provider_id))
+                    <img src="{{ Auth::user()->profile->avatar }}" class="img-circle elevation-2" alt="User Image">
+                @else
+                    <img src="{{ asset('/') . Auth::user()->profile->avatar }}" class="img-circle elevation-2" alt="User Image">
+                @endif
             </div>
             <div class="info">
-                <a href="#" class="d-block">Username</a>
+                <a href="{{ route('fels.user.profile', Auth::user()->profile) }}" class="d-block">Username</a>
             </div>
         </div>
 
@@ -49,7 +53,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.question.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-indent"></i>
                         <p>
                         Questions
@@ -74,14 +78,14 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <li class="nav-item" hidden>
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Roles</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.users-list') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Users</p>
                             </a>

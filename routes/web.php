@@ -39,6 +39,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
 
     Route::resource('lessons', 'LessonController');
 
+    Route::get('/users/index', 'UserController@index')->name('users-list');
+    Route::delete('/users/delete/{id}', 'UserController@deleteUser')->name('users-delete');
+    Route::patch('/users/restore/{id}', 'UserController@restoreUser')->name('users-restore');
+
     Route::resource('question', 'QuestionController');
     Route::get('/questions/list', 'QuestionController@getListQuestions');
     Route::get('/questions/all-lesson', 'QuestionController@getAllLesson');
