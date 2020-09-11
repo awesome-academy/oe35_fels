@@ -8,7 +8,6 @@ use App\Repositories\ModelsInterface\CourseRepositoryInterface;
 use App\Traits\JsonData;
 use Illuminate\Http\Request;
 
-
 class CourseController extends Controller
 {
     use JsonData;
@@ -57,7 +56,10 @@ class CourseController extends Controller
                 return $this->jsonMsgResult($result, false, 500);
             }
 
-            return $this->jsonMsgResult(false, trans('messages.json.success'), 201);
+            return response()->json([
+                'course_id' => $result->id,
+                'success' => trans('messages.json.success'),
+            ], 201);
         } catch (\Exception $e) {
             return $this->jsonMsgResult($e->getMessage(), false, 500);
         }

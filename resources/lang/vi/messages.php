@@ -159,6 +159,7 @@ return [
             'save' => 'Lưu',
             'cancel' => 'Hủy',
             'ok' => 'Ok',
+            'finish' => 'Xong',
         ],
         'form' => [
             'name' => 'Tên',

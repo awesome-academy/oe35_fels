@@ -41,6 +41,7 @@
 
 <!-- Bootstrap modal-->
 @include('back-end.courses.modal')
+@include('back-end.courses.word')
 
 @push('js')
 <script src="{{ asset('js/ajaxCourse.js') }}"></script>
