@@ -1,20 +1,21 @@
 @extends('back-end.layouts.master')
 
-@section('title', 'Lessons Management')
+@section('title', trans('messages.back_end.lesson_title'))
 
 @section('content-header')
-    <h2>Lessons Management</h2>
+<h2>@lang('messages.back_end.lesson_title')</h2>
 @endsection
 
 @section('content')
 <div class="col-12">
     <div class="card">
         <div class="card-header">
-        <!-- Button -->
-        <div class="mb-3 float-left">
-            <a href="javascript:void(0)" class="btn btn-primary" id="create_new_record"><i class="fa fa-plus"></i> @lang('messages.dataTables.add')</a>
-        </div>
-        <!-- /Button -->
+            <!-- Button -->
+            <div class="mb-3 float-left">
+                <a href="javascript:void(0)" class="btn btn-primary" id="create_new_record"><i class="fa fa-plus"></i>
+                    @lang('messages.dataTables.add')</a>
+            </div>
+            <!-- /Button -->
         </div>
         <div class="card-body">
             <!-- DataTable-->
@@ -43,5 +44,5 @@
 @include('back-end.lessons.modal')
 
 @push('js')
-    <script src="{{ asset('js/ajaxLesson.js') }}"></script>
+<script src="{{ asset('js/ajaxLesson.js') }}"></script>
 @endpush

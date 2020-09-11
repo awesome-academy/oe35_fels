@@ -28,6 +28,13 @@ return [
         'notify_problem' => 'Nếu bạn không nhận được email',
         'request_another' => 'nhấn vào đây để gửi yêu cầu khác',
     ],
+    'back_end' => [
+        'course_title' => 'Quản lí khóa học',
+        'lesson_title' => 'Quản lí bài kiểm tra',
+        'question_title' => 'Quản lí câu hỏi',
+        'user_title' => 'Quản lí người dùng',
+        'word_title' => 'Quản lí từ',
+    ],
     'front_end' => [
         'nav' => [
             'home' => 'Trang chủ',
@@ -66,7 +73,7 @@ return [
             'not_done' => 'Chưa hoàn thành',
             'select' => 'Chọn',
             'filter' => 'Lọc',
-            'no_data' => 'Không có dữ liệu'
+            'no_data' => 'Không có dữ liệu',
         ],
         'user' => [
             'setting' => 'Cài đặt',
@@ -153,6 +160,7 @@ return [
         'form' => [
             'name' => 'Tên',
             'course' => 'Khóa học',
+            'mean' => 'Nghĩa của từ',
         ],
     ],
     'validate' => [

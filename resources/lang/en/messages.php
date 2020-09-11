@@ -28,6 +28,13 @@ return [
         'notify_problem' => 'If you did not receive the email',
         'request_another' => 'click here to request another',
     ],
+    'back_end' => [
+        'course_title' => 'Courses Management',
+        'lesson_title' => 'Lessons Management',
+        'question_title' => 'Questions Management',
+        'user_title' => 'Users Management',
+        'word_title' => 'Words Management',
+    ],
     'front_end' => [
         'nav' => [
             'home' => 'Home',
@@ -66,7 +73,7 @@ return [
             'not_done' => 'Not done',
             'select' => 'Select',
             'filter' => 'Filter',
-            'no_data' => 'No data'
+            'no_data' => 'No data',
         ],
         'user' => [
             'setting' => 'Setting',
@@ -153,6 +160,7 @@ return [
         'form' => [
             'name' => 'Name',
             'course' => 'Course',
+            'mean' => 'Word Mean',
         ],
     ],
     'validate' => [
