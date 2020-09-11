@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\DataTables;
 
 class UserEloquentRepository extends EloquentRepository implements UserRepositoryInterface
 {
@@ -200,6 +201,49 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             }
 
             return $authUser;
+        } catch (\Exception $e) {
+            return $this->errroResult($e->getMessage());
+        }
+    }
+
+    // get json users
+    public function jsonUsers()
+    {
+        try {
+            $data = $this->model::select('*')->withTrashed();
+
+            return DataTables::of($data)
+                ->addColumn('name', function ($data) {
+                    $profile = $data->profile;
+                    if ($profile == null) {
+                        return null;
+                    }
+
+                    return $profile->name;
+                })
+                ->addIndexColumn()->toJson();
+        } catch (\Exception $e) {
+            return $this->errroResult($e->getMessage());
+        }
+    }
+
+    // get user
+    public function findByIdWithTrashed($id)
+    {
+        try {
+            $user = $this->model->withTrashed()->findOrFail($id);
+
+            return $user;
+        } catch (\Exception $e) {
+            return $this->errroResult($e->getMessage());
+        }
+    }
+
+    // restore user
+    public function restoreSoftDelete($user)
+    {
+        try {
+            return $user->restore();
         } catch (\Exception $e) {
             return $this->errroResult($e->getMessage());
         }
