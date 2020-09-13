@@ -48,6 +48,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     Route::get('/questions/all-lesson', 'QuestionController@getAllLesson');
 
     Route::resource('words', 'WordController');
+
+    // notification
+    Route::post('/send-notify', 'NotifyCourseController@sendNotify')->name('notify-course');
+    Route::post('/notify/read-all/{userId}', 'NotifyCourseController@markReadNotify')->name('notify-read-all');
 });
 
 // E-learning

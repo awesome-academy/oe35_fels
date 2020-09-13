@@ -31,4 +31,8 @@ return [
         'vi' => 'vi',
         'en' => 'en',
     ],
+    'mail' => [
+        'admin' => 'admin@mail.com',
+        'name' => 'Admin',
+    ],
 ];

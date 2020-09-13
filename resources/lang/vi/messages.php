@@ -35,6 +35,13 @@ return [
         'user_title' => 'Quản lí người dùng',
         'word_title' => 'Quản lí từ',
     ],
+    'notify' => [
+        'title' => 'Khóa học mới',
+        'mark_all_read' => 'Đánh dấu đã đọc',
+        'no_notify' => 'Không có thông báo',
+        'title_email' => 'Hãy học khóa học mới',
+        'description' => 'Mô tả',
+    ],
     'front_end' => [
         'nav' => [
             'home' => 'Trang chủ',

@@ -248,4 +248,31 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             return $this->errroResult($e->getMessage());
         }
     }
+
+    // get users by role
+    public function getUserByRole($roleId)
+    {
+        try {
+            $users = $this->model->active()->where('role_id', $roleId)->get();
+
+            return $users;
+        } catch (\Exception $e) {
+
+            return $this->errroResult($e->getMessage());
+        }
+    }
+
+    // mark all read notification
+    public function markAllReadNotify($userId)
+    {
+        try {
+            $user = $this->findById($userId);
+            $user->unreadNotifications->markAsRead();
+
+            return true;
+        } catch (\Exception $e) {
+
+            return $this->errroResult($e->getMessage());
+        }
+    }
 }

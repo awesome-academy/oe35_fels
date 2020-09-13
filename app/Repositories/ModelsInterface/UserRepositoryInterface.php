@@ -35,4 +35,10 @@ interface UserRepositoryInterface extends RepositoryInterface
 
     // restore user
     public function restoreSoftDelete($user);
+
+    // get users by role
+    public function getUserByRole($roleId);
+
+    // mark all read notification
+    public function markAllReadNotify($userId);
 }

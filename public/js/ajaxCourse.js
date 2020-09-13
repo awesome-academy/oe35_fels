@@ -144,6 +144,12 @@ $("#btn_finishWord").click(function () {
     });
 
     if (empty) {
+        var data = {
+            'course_id': $("#course_id").val()
+        };
+        $.post(SITEURL + '/admin/send-notify', data, function (data, status) {
+            $.msgNotification("success", data.success);
+        });
         $("#datatable_record").DataTable().ajax.reload();
         setTimeout(function () {
             $("#formModalWord").trigger("reset");

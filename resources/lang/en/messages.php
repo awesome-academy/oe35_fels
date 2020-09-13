@@ -35,6 +35,13 @@ return [
         'user_title' => 'Users Management',
         'word_title' => 'Words Management',
     ],
+    'notify' => [
+        'title' => 'New Course',
+        'mark_all_read' => 'Mark all as read',
+        'no_notify' => 'No notification',
+        'title_email' => 'Let learn a New Course',
+        'description' => 'Description',
+    ],
     'front_end' => [
         'nav' => [
             'home' => 'Home',
