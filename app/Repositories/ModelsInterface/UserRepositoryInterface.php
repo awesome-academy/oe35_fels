@@ -41,4 +41,7 @@ interface UserRepositoryInterface extends RepositoryInterface
 
     // mark all read notification
     public function markAllReadNotify($userId);
+
+    // get courses which user had learned but not finish lesson
+    public function getCoursesNotDoLesson($userId);
 }

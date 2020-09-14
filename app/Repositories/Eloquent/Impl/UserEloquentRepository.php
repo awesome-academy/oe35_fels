@@ -275,4 +275,29 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             return $this->errroResult($e->getMessage());
         }
     }
+
+    // get courses which user had learned but not finish lesson
+    public function getCoursesNotDoLesson($userId)
+    {
+        try {
+            $user = $this->findById($userId);
+            /*
+            Get courses which user had learned but not do the lesson
+            1. Get courses user had learned
+            2. Get only courses have lesson
+            3. Get only lessons which user not do the lesson
+            4. combine condition
+            */
+            $courses = $user->courses()
+                            ->whereHas('lesson', function ($query) {
+                                return $query->doesntHave('users');
+                            })
+                            ->get();
+
+            return $courses;
+        } catch (\Exception $e) {
+
+            return $this->errroResult($e->getMessage());
+        }
+    }
 }
