@@ -48,6 +48,10 @@
 </body>
     <!-- REQUIRED SCRIPTS -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
+    <!-- PUSHER SCRIPTS -->
+    @include('layouts.partials.pusher')
 
     <!-- OPTIONAL JS -->
     @stack('js')

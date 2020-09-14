@@ -80,4 +80,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Lesson::class, 'lesson_user', 'user_id', 'lesson_id')
                     ->withPivot('score')->withTimestamps();
     }
+
+    // query get active user
+    public function scopeActive($query)
+    {
+        return $query->whereNull('deleted_at');
+    }
 }

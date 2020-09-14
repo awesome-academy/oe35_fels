@@ -22,11 +22,68 @@
                             </ul>
                         </nav>
                         <div class="header_content_right ml-auto text-right">
+                            <div class="d-flex flex-col align-items-start justify-content-start">
+                                <!-- Notification -->
+                                @auth
+                                <div id="notify-data">
+                                @php
+                                    $user = Auth::user();
+                                    $unreadNotifyCount = $user->unreadNotifications->count();
+                                @endphp
+                                </div>
+                                <div class="align-items-center">
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="notification"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-bell" aria-hidden="true"></i>
+                                            <span class="badge badge-danger badge-counter" id="notify-count">
+                                                {{ $unreadNotifyCount }}
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="notification">
+                                            <h6 class="dropdown-header">
+                                                <p class="small">
+                                                    @lang('messages.notify.title')
+                                                </p>
+                                            </h6>
+                                            <div class="dropdown-divider"></div>
+                                            <div id="notify-content">
+                                                @foreach ($user->unreadNotifications as $notification)
+                                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                                        <div class="ml-3">
+                                                            <a href="{{ route('fels.course.detail', $notification->data['name']) }}">
+                                                                <span class="font-weight-bold">
+                                                                    {{ $notification->data['name'] }}
+                                                                </span>
+                                                            </a>
+                                                            <div class="small text-gray-500">
+                                                                {{ customDateFormat($notification->created_at) }}
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                            <div id="notify-footer">
+                                                @if ($unreadNotifyCount > 0)
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item text-center small"
+                                                    href="javascript:void(0)" onclick="markAllReadNotify({{ $user->id }});">
+                                                        @lang('messages.notify.mark_all_read')
+                                                    </a>
+                                                @else
+                                                    <p class="text-center small">
+                                                        @lang('messages.notify.no_notify')
+                                                    </p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endauth
 
-                            <!-- Hamburger -->
-                            <div class="account align-items-center">
-                                <div class="d-flex flex-col align-items-start justify-content-start">
-                                    <div class="col">
+                                <!-- Hamburger -->
+                                <div class="account col align-items-center">
+                                    <div>
                                         <form method="POST" action="{{ route('locale') }}">
                                             @csrf
                                             @php
@@ -46,29 +103,27 @@
                                         </form>
                                     </div>
 
-                                    <div class="col">
-                                        <div class="dropdown col">
-                                            <a class="dropdown-toggle" href="#" role="button" id="userName"
-                                                data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">@lang('messages.front_end.nav.account')</a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                                @guest
-                                                    <a class="dropdown-item" href="{{ route('login') }}">@lang('messages.login')</a>
-                                                    @if (Route::has('register'))
-                                                        <a class="dropdown-item" href="{{ route('register') }}">@lang('messages.register')</a>
-                                                    @endif
-                                                @else
-                                                <a class="dropdown-item" href="{{ route('fels.user.profile', Auth::user()->profile) }}">
-                                                        @lang('messages.front_end.nav.profile')</a>
-                                                <a class="dropdown-item" href="javascript:void(0)" id="btn_logout">@lang('messages.logout')</a>
-                                                @endguest
-                                            </div>
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="userName"
+                                            data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">@lang('messages.front_end.nav.account')</a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
+                                            @guest
+                                                <a class="dropdown-item" href="{{ route('login') }}">@lang('messages.login')</a>
+                                                @if (Route::has('register'))
+                                                    <a class="dropdown-item" href="{{ route('register') }}">@lang('messages.register')</a>
+                                                @endif
+                                            @else
+                                            <a class="dropdown-item" href="{{ route('fels.user.profile', $user->profile) }}">
+                                                    @lang('messages.front_end.nav.profile')</a>
+                                            <a class="dropdown-item" href="javascript:void(0)" id="btn_logout">@lang('messages.logout')</a>
+                                            @endguest
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="hamburger menu_mm">
-                                <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                <div class="hamburger col menu_mm">
+                                    <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
