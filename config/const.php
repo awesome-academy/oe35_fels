@@ -35,4 +35,8 @@ return [
         'admin' => 'admin@mail.com',
         'name' => 'Admin',
     ],
+    'job' => [
+        'tries' => 3,
+        'timeout' => 30,
+    ],
 ];
