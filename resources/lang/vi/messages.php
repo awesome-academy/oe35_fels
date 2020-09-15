@@ -143,6 +143,12 @@ return [
         'en' => 'Tiếng Anh',
         'vi' => 'Tiếng Việt',
     ],
+    'mail' => [
+        'title' => 'Check what you learn with the exams',
+        'dear' => 'Gửi',
+        'text' => 'Các bài kiểm tra bạn chưa hoàn thành',
+        'btn_exam' => 'Bắt đầu',
+    ],
     'dataTables' => [
         'add' => 'Thêm',
         'back' => 'Trở lại',

@@ -143,6 +143,12 @@ return [
         'en' => 'English',
         'vi' => 'Vietnamese',
     ],
+    'mail' => [
+        'title' => 'Check what you learn with the exams',
+        'dear' => 'Dear',
+        'text' => 'The exams you not finish yet',
+        'btn_exam' => 'Start',
+    ],
     'dataTables' => [
         'add' => 'Add',
         'back' => 'Back',
