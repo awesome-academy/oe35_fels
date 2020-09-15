@@ -300,4 +300,80 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
             return $this->errroResult($e->getMessage());
         }
     }
+
+    // get chart data for admin statistic
+    public function getChartDataUser($datetime)
+    {
+        try {
+            switch ($datetime) {
+                case 'month':
+                    $result = DB::table('users')
+                            ->select(
+                                DB::raw('count(id) as value,
+                                month(created_at) as indexs')
+                            )
+                            ->where(DB::raw('YEAR(created_at)'), config('const.year'))
+                            ->groupBy(DB::raw('month(created_at)'))
+                            ->get();
+
+                    return $result;
+
+                    break;
+                case 'quarter':
+                    $result = DB::table('users')
+                            ->select(
+                                DB::raw('count(id) as value,
+                                quarter(created_at) as indexs')
+                            )
+                            ->where(DB::raw('YEAR(created_at)'), config('const.year'))
+                            ->groupBy(DB::raw('quarter(created_at)'))
+                            ->get();
+
+                    return $result;
+
+                    break;
+                case 'year':
+                    $result = DB::table('users')
+                            ->select(
+                                DB::raw('count(id) as value,
+                                year(created_at) as indexs')
+                            )
+                            ->groupBy(DB::raw('year(created_at)'))
+                            ->get();
+
+                    return $result;
+
+                    break;
+            }
+        } catch (\Exception $e) {
+
+            return $this->errroResult($e->getMessage());
+        }
+    }
+
+    // count total user
+    public function countTotalUser()
+    {
+        try {
+            $data = $this->model->withTrashed()->count();
+
+            return $data;
+        } catch (\Exception $e) {
+
+            return $this->errroResult($e->getMessage());
+        }
+    }
+
+    // count total user
+    public function countTotalActiveUser()
+    {
+        try {
+            $data = $this->model->active()->count();
+
+            return $data;
+        } catch (\Exception $e) {
+
+            return $this->errroResult($e->getMessage());
+        }
+    }
 }

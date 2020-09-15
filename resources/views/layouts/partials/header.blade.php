@@ -29,6 +29,7 @@
                                 @php
                                     $user = Auth::user();
                                     $unreadNotifyCount = $user->unreadNotifications->count();
+                                    $adminRole = [config('const.role.admin'), config('const.role.super_admin')];
                                 @endphp
                                 </div>
                                 <div class="align-items-center">
@@ -114,6 +115,10 @@
                                                     <a class="dropdown-item" href="{{ route('register') }}">@lang('messages.register')</a>
                                                 @endif
                                             @else
+                                            @if (in_array($user->role_id, $adminRole))
+                                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                                @lang('messages.dashboard')</a>
+                                            @endif
                                             <a class="dropdown-item" href="{{ route('fels.user.profile', $user->profile) }}">
                                                     @lang('messages.front_end.nav.profile')</a>
                                             <a class="dropdown-item" href="javascript:void(0)" id="btn_logout">@lang('messages.logout')</a>

@@ -45,6 +45,7 @@
                         @yield('content')
                     </div>
                     <!-- /.row -->
+                    @yield('sub-content')
                 </div>
                 <!-- /.container-fluid -->
             </div>

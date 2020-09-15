@@ -39,4 +39,9 @@ return [
         'tries' => 3,
         'timeout' => 30,
     ],
+    'role' => [
+        'super_admin' => 1,
+        'admin' => 2,
+        'user' => 3,
+    ],
 ];

@@ -52,6 +52,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     // notification
     Route::post('/send-notify', 'NotifyCourseController@sendNotify')->name('notify-course');
     Route::post('/notify/read-all/{userId}', 'NotifyCourseController@markReadNotify')->name('notify-read-all');
+
+    //Dashboard
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/chart-data', 'DashboardController@getChartData')->name('chart-data');
 });
 
 // E-learning

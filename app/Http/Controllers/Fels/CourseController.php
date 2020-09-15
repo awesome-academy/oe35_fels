@@ -53,6 +53,13 @@ class CourseController extends Controller
         try {
             $userId = Auth::user()->id;
             $courseId = $course->id;
+            // mark notification as read
+            $unreadNotify = Auth::user()->unreadNotifications;
+            foreach ($unreadNotify as $key => $value) {
+                if ($value->data['id'] == $courseId) {
+                    $value->markAsRead();
+                }
+            }
             $this->courseRepository->learnCourse($userId, $courseId);
             // get all words belong to this course
             $words = $this->courseRepository->getWordsAndStatusByCourse($userId, $courseId);
@@ -70,7 +77,7 @@ class CourseController extends Controller
                     'lesson' => $lesson,
                 ]);
         } catch (\Exception $e) {
-            return view('view', ['test' => $e->getMessage()]);
+
             return redirect()->route('fels.course.list')
                 ->with('error', trans('messages.front_end.fels.course_not_found'));
         }
