@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendMailCourseJob;
 use App\Notifications\NewCourseNotification;
 use App\Repositories\ModelsInterface\CourseRepositoryInterface;
 use App\Repositories\ModelsInterface\UserRepositoryInterface;
@@ -39,6 +40,8 @@ class NotifyCourseController extends Controller
             } else {
                 // notification
                 Notification::sendNow($users, new NewCourseNotification($course), ['database']);
+                // queue job send mail
+                SendMailCourseJob::dispatch($users, $course);
 
                 // pusher notification real-time
                 $options = [
