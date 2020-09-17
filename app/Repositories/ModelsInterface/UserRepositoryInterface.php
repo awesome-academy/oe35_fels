@@ -44,4 +44,13 @@ interface UserRepositoryInterface extends RepositoryInterface
 
     // get courses which user had learned but not finish lesson
     public function getCoursesNotDoLesson($userId);
+
+    // get chart data for admin statistic by month, quarter, year
+    public function getChartDataUser($datetime);
+
+    // count total user
+    public function countTotalUser();
+
+    // count total user
+    public function countTotalActiveUser();
 }

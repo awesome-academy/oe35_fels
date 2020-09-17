@@ -37,4 +37,19 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Override redirect url
+     */
+    protected function redirectTo()
+    {
+        $roleId = auth()->user()->role_id;
+        $adminRole = [config('const.role.admin'), config('const.role.super_admin')];
+        if (in_array($roleId, $adminRole)) {
+
+            return route('admin.dashboard');
+        }
+
+        return route('homepage');
+    }
 }

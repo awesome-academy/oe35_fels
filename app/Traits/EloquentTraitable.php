@@ -11,4 +11,20 @@ trait EloquentTraitable
     {
         return collect([]);
     }
+
+    /**
+     * Count total record of table - model
+    */
+    public function countTotalRecord($modelClass)
+    {
+        try {
+            $model = app()->make($modelClass);
+            $data = $model->count();
+
+            return $data;
+        } catch (\Exception $e) {
+
+            return $e->getMessage();
+        }
+    }
 }
